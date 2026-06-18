@@ -21,5 +21,12 @@
 - **Hedged is NOT a positive-edge play.** A sparse-band delta hedge converts the position into a realized-variance harvest, which in testing was **negative expectancy in every bucket** except one tiny, noisy variance-selected sample (≈breakeven). On choppy sessions the hedged sleeve loses *less* than the unhedged sleeve — but "less negative" is loss-mitigation, not an edge.
 - **Therefore the rule is: trend → unhedged (be long); chop → stand aside (don't be long vol at all).** Delta-hedging is only a way to *reduce the bleed* if you are already long into a choppy tape — it is not a reason to put a position on, and it does not turn a choppy session into a profitable one.
 
+## Scope — where it holds, where it doesn't
+
+- **Holds: short-dated (weekly / near-expiry) INDEX options.** High intraday gamma plus tight spreads are what let the momentum capture pay. This is the only setting where a positive edge appeared.
+- **Did NOT hold: monthly-expiry options held intraday.** A longer-dated option carries too little intraday gamma to capture the move before vega decay, spread, and theta erode it — every structure and hedge variant lost across the test, and the momentum selection added no edge.
+- **Did NOT hold: single stocks (e.g. NASDAQ-100 names) intraday.** Wide single-name option spreads plus the same low-gamma problem on monthly expiry sank all four combos (roughly −9% to −10% ROI), with momentum selection providing no rescue.
+- **Both conditions are required — *short-dated AND index*.** Drop either (go to monthly, or to single names) and the edge disappears. This boundary is structural (a monthly option simply has little intraday gamma), so it is robust to the pricing assumptions.
+
 ## Status
 Validated on **modeled options priced off real index paths** (real NIFTY and S&P data, real VIX / India VIX, full transaction-cost stack including a realistic skew), holding up on a ~500-session sample. **Pending confirmation on real option-tick data** (real spreads and smile) before live deployment.
