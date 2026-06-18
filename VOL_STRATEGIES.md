@@ -23,10 +23,15 @@
 
 ## Scope — where it holds, where it doesn't
 
-- **Holds: short-dated (weekly / near-expiry) INDEX options.** High intraday gamma plus tight spreads are what let the momentum capture pay. This is the only setting where a positive edge appeared.
-- **Did NOT hold: monthly-expiry options held intraday.** A longer-dated option carries too little intraday gamma to capture the move before vega decay, spread, and theta erode it — every structure and hedge variant lost across the test, and the momentum selection added no edge.
-- **Did NOT hold: single stocks (e.g. NASDAQ-100 names) intraday.** Wide single-name option spreads plus the same low-gamma problem on monthly expiry sank all four combos (roughly −9% to −10% ROI), with momentum selection providing no rescue.
-- **Both conditions are required — *short-dated AND index*.** Drop either (go to monthly, or to single names) and the edge disappears. This boundary is structural (a monthly option simply has little intraday gamma), so it is robust to the pricing assumptions.
+**Holds (a positive edge appeared):**
+- **Short-dated (weekly / near-expiry) equity INDEX options.** High intraday gamma plus tight spreads are what let the momentum capture pay.
+- **Bitcoin daily-expiry options (Deribit).** The crypto analogue of the same conditions — daily expiry = very high gamma, and BTC is a liquid, index-like underlying with its own implied-vol index (DVOL). Momentum-selected *unhedged* straddles/strangles showed the strongest edge of any market tested, with the slightly-OTM strangle the most capital-efficient. *Caveat:* validated on modeled options priced off the real BTC path + real DVOL; the strangle's headline ROI is optimistic because per-strike skew and wider OTM-option spreads were not modeled — pending real Deribit option-tick confirmation.
+
+**Did NOT hold:**
+- **Monthly-expiry options held intraday.** A longer-dated option carries too little intraday gamma to capture the move before vega decay, spread, and theta erode it — every structure and hedge variant lost, and the momentum selection added no edge.
+- **Single stocks (e.g. NASDAQ-100 names) intraday.** Wide single-name option spreads plus the same low-gamma problem on monthly expiry sank all four combos (roughly −9% to −10% ROI), with momentum selection providing no rescue.
+
+**The common thread — *short-dated AND liquid / index-like*.** Meet both (equity-index weeklies, BTC dailies) and the edge appears; drop either (go to monthly, or to single names) and it disappears. The boundary is structural — longer-dated = low intraday gamma, single names = wide spreads — so it is robust to the pricing assumptions.
 
 ## Status
 Validated on **modeled options priced off real index paths** (real NIFTY and S&P data, real VIX / India VIX, full transaction-cost stack including a realistic skew), holding up on a ~500-session sample. **Pending confirmation on real option-tick data** (real spreads and smile) before live deployment.
