@@ -1,0 +1,7 @@
+# Full verbatim extracts of copyrighted books — do NOT redistribute / publish.
+# Kept locally for analysis only.
+text/
+*.pdf
+
+# OS / editor cruft
+.DS_Store
