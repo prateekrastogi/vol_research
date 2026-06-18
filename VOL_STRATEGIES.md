@@ -17,9 +17,9 @@
 - **Slightly-OTM strangle** — cheaper premium, less capital at risk; roughly the same absolute P&L on the selected big-move sessions for materially less capital → **higher return on capital (ROI)**, scaling to more size at equal capital. More binary (the move must reach the strikes) and more dependent on the selection being right. Its ROI edge held up even after a realistic volatility-skew adjustment.
 
 ### Hedged vs unhedged (the key choice)
-- **Unhedged — the positive-edge expression for this thesis.** Because the thesis is *directional continuation*, holding the gamma unhedged keeps the full move. This is where the edge showed up in testing.
-- **Sparse-band delta-hedged — only for a chop / realized-variance thesis.** Delta-hedging converts the position into a pure realized-variance harvest and *sells the trend away*; on the momentum selection it merely matched or lagged the unhedged sleeve (and on NSE its rehedging cost dragged it further behind). It is preferable only when you expect a high-realized-but-rangebound (choppy) session rather than a trending one.
-- **Rule of thumb:** match the hedge to the thesis — **trend → unhedged; chop → hedged.** Mixing them (hedging a trend bet) is the worst of both.
+- **Unhedged — the positive-edge expression, and the only one found here.** The thesis is *directional continuation*, so holding the gamma unhedged keeps the full move. This was the sole sleeve that showed positive expectancy in testing.
+- **Hedged is NOT a positive-edge play.** A sparse-band delta hedge converts the position into a realized-variance harvest, which in testing was **negative expectancy in every bucket** except one tiny, noisy variance-selected sample (≈breakeven). On choppy sessions the hedged sleeve loses *less* than the unhedged sleeve — but "less negative" is loss-mitigation, not an edge.
+- **Therefore the rule is: trend → unhedged (be long); chop → stand aside (don't be long vol at all).** Delta-hedging is only a way to *reduce the bleed* if you are already long into a choppy tape — it is not a reason to put a position on, and it does not turn a choppy session into a profitable one.
 
 ## Status
 Validated on **modeled options priced off real index paths** (real NIFTY and S&P data, real VIX / India VIX, full transaction-cost stack including a realistic skew), holding up on a ~500-session sample. **Pending confirmation on real option-tick data** (real spreads and smile) before live deployment.
