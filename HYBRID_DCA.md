@@ -91,37 +91,36 @@ Replacing the ETF sleeves with individual large-cap stocks **massively raises cr
 - **Weights** — DeMiguel-Garlappi-Uppal (2009): no optimizer beat naive 1/N out-of-sample; Michaud: optimizers are "estimation-error maximizers." **The round-number heuristic is correct; don't fine-tune to the backtest.**
 
 ## How this compares to value & momentum investing
-The growth tilt is *regime beta*, not a premium. The two genuine documented return premia are **value** and **momentum** — so how do they stack up at beating the index (DCA monthly + hold, long-only factor ETFs)?
+The growth tilt is *regime beta*, not a premium. The two genuine documented return premia are **value** and **momentum** — so how do they stack up at beating the index (DCA monthly + hold, long-only factor ETFs)? *(All figures: identical windows starting where every ticker exists — the factor-era window begins at MTUM's 2013-04 inception — and drawdowns are weekly-sampled. See `backtest/compare_final.py`.)*
 
 | Approach | 2004–25 IRR (maxDD) | 2013–25 IRR (maxDD) | vs index |
 |---|--:|--:|--:|
-| Growth tilt (QQQ) | 16.3% (−37%) | 18.9% (−30%) | +4.6 / +5.3% |
-| **Momentum (MTUM)** | *n/a pre-2013* | 16.0% (−30%) | **+2.4%** |
-| **Hybrid 50/30/20** | 14.1% (−27%) | 15.9% (−26%) | +2.3% |
-| Index (SPY) | 11.7% (−39%) | 13.7% (−31%) | — |
-| **Value (VTV large)** | 10.1% (−42%) | 11.4% (−33%) | **−1.6 / −2.3%** |
-| Value (small, IWN/VBR) | 8.5% (−50%) | 9.4% (−42%) | −3.3 / −4.3% |
+| Growth tilt (QQQ) | 16.6% (−40%) | 19.0% (−33%) | +4.7 / +5.3% |
+| **Momentum (MTUM)** | *n/a pre-2013* | 16.0% (−31%) | **+2.3%** |
+| **Hybrid 50/30/20** | 14.2% (−27%) | 15.7% (−27%) | +2.2 / +2.0% |
+| Index (SPY) | 12.0% (−36%) | 13.7% (−32%) | — |
+| **Value (VTV)** | 10.3% (−39%) | 11.4% (−33%) | **−1.7 / −2.3%** |
 
-- **Value *lagged* the index (−1.6 to −4.3%) with deeper drawdowns** over the last 15–20y — the "**value winter**" (2007–2020), the same re-rating regime that made growth/the hybrid look good. A retail long-only value-ETF buyer *underperformed*.
-- **Momentum (MTUM) beat the index by +2.4%** — the one classic factor that did in the modern sample, and the same margin as the hybrid — but at the *same* −30% drawdown (no risk reduction), with **crash risk** (2009 long-short momentum crash ≈ −70%) and the **highest turnover** (tax/cost drag, brutal under India's STT).
-- **The hybrid matched momentum's excess at *lower* drawdown** (−26% vs −30/−33%), because its edge is *diversification*, not a premium.
+- **Value *lagged* the index (−1.7 to −2.3%; small-cap value worse still) with deeper drawdowns** over the last 15–20y — the "**value winter**" (2007–2020), the same re-rating regime that made growth/the hybrid look good. A retail long-only value-ETF buyer *underperformed*.
+- **Momentum and the hybrid are ~tied on return — 16.0% vs 15.7% (a +0.3% gap = noise).** Neither cleanly beats the other on return. What separates them is **risk: the hybrid's drawdown is −27% vs momentum's −31%.** Momentum also carries **crash risk** (2009 long-short momentum crash ≈ −70%) and the **highest turnover** (tax/cost drag, brutal under India's STT). So the hybrid's edge over momentum is *risk-adjusted, not raw return*.
 
 **Regime caveat:** 2004–25 is value's *worst* century-era and growth/momentum's best — the table flatters the latter. **Long run, value beat growth ~+3–5%/yr (Fama-French HML, 1926–2007)** — a real derived edge, but earned long-short, requiring decade-long patience (you just saw a 13-year drought) and diluted in long-only ETFs. **Momentum has the highest long-run risk-adjusted premium** of the classics. And the textbook winner is to **combine them**: Asness-Moskowitz-Pedersen ("Value and Momentum Everywhere") show value and momentum are *negatively correlated*, so a value+momentum blend has a far higher Sharpe than either alone — the same "uncorrelated engines take turns" logic as the hybrid, but powered by two genuine premia.
 
-**Verdict:** momentum is the factor that most reliably beats the index *on return* (costs you turnover/crash risk); value is the deepest-documented but is in a drought and recently *lost*; value+momentum combined is the principled return play; the hybrid trades a slightly-less-certain return edge for a **durable drawdown reduction** none of the single factors give.
+**Verdict:** momentum beats the index *on return* (+2.3%) but only *ties* the hybrid; value is the deepest-documented premium but is in a drought and recently *lost*; the hybrid matches momentum's return at lower drawdown — its distinctive feature is **risk reduction**, not a bigger return.
 
-### Does combining value+momentum beat the index *and* the hybrid? (2013–25)
+### Does combining value+momentum beat the index *and* the hybrid? (2013-04 → 2025, 172 buys)
 | strategy | IRR | maxDD | vs SPY | vs hybrid |
 |---|--:|--:|--:|--:|
-| Hybrid 50/30/20 | 15.9% | −26% | +2.3% | — |
-| Val+Mom+Growth ⅓ (rebal) | 15.6% | −29% | +1.9% | −0.3% |
-| Momentum alone (MTUM) | 15.5% | ~−30% | +1.9% | −0.4% |
-| **Value+Mom 50/50 (rebal)** | **13.7%** | −31% | **+0.0%** | **−2.2%** |
-| Val+Mom+Gold 40/40/20 | 13.6% | −27% | −0.1% | −2.4% |
-| Index (SPY) | 13.7% | −31% | — | −2.3% |
-| Value alone (VTV) | 11.4% | −33% | −2.3% | −4.5% |
+| Growth (QQQ) | 19.0% | −33% | +5.3% | +3.3% |
+| Momentum alone (MTUM) | 16.0% | −31% | +2.3% | +0.3% |
+| Val+Mom+Growth ⅓ (rebal) | 15.8% | −30% | +2.1% | +0.1% |
+| Hybrid 50/30/20 | 15.7% | −27% | +2.0% | — |
+| **Value+Mom 50/50 (rebal)** | **13.9%** | −32% | **+0.2%** | **−1.8%** |
+| Val+Mom+Gold 40/40/20 (rebal) | 13.8% | −27% | +0.1% | −1.9% |
+| Index (SPY) | 13.7% | −32% | — | −2.0% |
+| Value (VTV) | 11.4% | −33% | −2.3% | −4.3% |
 
-**No — the combo *tied* the index (+0.0%) and *lost* to the hybrid (−2.2%).** Momentum *alone* (+1.9%) beat the blend; value was dead weight that dragged it to the index, and the pair didn't even cut drawdown (−31% ≈ index — value & momentum both fell in 2020 & 2022). The combo only matched the hybrid when *growth* was added (regime beta, not the pairing). **Caveat:** 2013–25 is value's worst century-era and the *only* testable window (MTUM born 2013), so it's rigged against the pairing. Asness's value+momentum edge is a **multi-decade, global, largely long-short, risk-adjusted** result — real, but it shows up over a full cycle (incl. value's good years), not in a long-only slice of value's drought; net of turnover/tax (India STT) it erodes further. Bottom line: a documented edge you can't bank on in any given decade — *this* decade it underperformed the simple hybrid.
+**No — the combo essentially *tied* the index (+0.2%) and *lost* to the hybrid (−1.8%).** Momentum *alone* (+2.3%) beat the blend; value was dead weight that dragged it to the index, and the pair didn't cut drawdown (−32% ≈ index — value & momentum both fell in 2020 & 2022). The combo only matched the hybrid when *growth* was added (Val+Mom+Growth +2.1%; regime beta, not the pairing). **Caveat:** 2013–25 is value's worst century-era and the *only* testable window (MTUM born 2013), so it's rigged against the pairing. Asness's value+momentum edge is a **multi-decade, global, largely long-short, risk-adjusted** result — real, but it shows up over a full cycle (incl. value's good years), not in a long-only slice of value's drought; net of turnover/tax (India STT) it erodes further. Bottom line: a documented edge you can't bank on in any given decade — *this* decade it underperformed the simple hybrid.
 
 ## Honest caveats (sharpened by the literature)
 - **The durable, research-backed win is the lower drawdown / higher Sharpe** (−22% to −26% vs index ~−30% to −39%) — pure diversification, robustly supported. *That* is what you can rely on forward.
