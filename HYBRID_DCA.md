@@ -46,19 +46,66 @@ No leverage. Each month's contribution is allocated to the targets; you **never 
 - Because the engines are anti-correlated, **at least one tends to be working** — so the edge is robust across regimes, and the **drawdown is structurally lower** than an all-equity index.
 - It's **buy-and-hold + DCA** — low turnover, no value-trap risk (ETFs don't go to zero), no cash drag, no selling winners. It avoids every failure mode of the earlier variants.
 
-## Honest caveats
-- **Return excess is regime-dependent in *size*** (+1.4% to +4.1% across windows; centre ~+2%). The high end was **gold-driven** (its 2000s bull) — don't assume it repeats. **Forward, expect ~1.5–2.5% excess, not a guaranteed 3%.**
-- **The structural win is the lower drawdown** (−22% to −26% vs index ~−30% to −39%) — that's the most forward-reliable benefit (it's diversification, not return-prediction).
-- **Component selection has hindsight** — QQQ and gold were *chosen because* they did well; a truly out-of-sample analyst in 2004 might not have picked them. The walk-forward (beating even in tech's lost decade, via gold) mitigates but doesn't eliminate this.
-- **The grid "optimal" (100% QQQ / 100% gold) is overfit** — the optimizer just picks the ex-post winner. **Use the fixed blend, never the optimum.**
-- **India sample is shorter (2009–25, clean from 2009)** and lacks sector-ETF breadth, so the "beaten-up" sleeve is crude there; treat India as more fragile than the US 21-year result.
-- Single path per market; ~20 years; no leverage assumed.
+## Allocation sensitivity — is it knife-edge? (No.)
+Sweeping the weights (US, 2004–25; index SPY +12.0%):
+
+| growth/beaten/gold | IRR | maxDD | ret/DD | vs index |
+|---|--:|--:|--:|--:|
+| 100/0/0 *(overfit corner)* | 16.6% | −34% | 0.48 | +4.7% |
+| 60/30/10 | 14.8% | −28% | 0.54 | +2.9% |
+| **50/30/20** | **14.2%** | **−26%** | **0.55** | **+2.2%** |
+| 50/20/30 *(best risk-adj.)* | 14.1% | −25% | 0.56 | +2.2% |
+| 0/100/0 *(beaten only)* | 10.9% | −34% | 0.32 | −1.1% |
+| 0/0/100 *(gold only)* | 9.3% | −25% | 0.37 | −2.7% |
+
+- **Every blend with ≥40% growth beat the index (+1.6 to +4.7%) — the edge spans a wide range, not a single point.**
+- **More growth → more return *and* more drawdown; more gold → less of both.** Pure-gold and pure-beaten *underperform* the index — **the growth sleeve is the return engine; gold/beaten convert it into a better risk-adjusted result.**
+- **The best return-per-drawdown is a *balanced* blend (~50/20/30), not a corner.** Maximizing raw return pushes to 100% growth, which has the *worst* risk-adjusted ratio. Don't optimize to a corner.
+- India is even flatter (every blend beat by ~+2.4%), but partly because NiftyBees large-cap was a *weak benchmark* (Next-50 and gold both independently beat it 2009–25).
+
+## Why ETFs, not single stocks (don't add "top-30 names")
+Replacing the ETF sleeves with individual large-cap stocks **massively raises crash risk** for no reliable return gain:
+
+| | US stocks (18) | US sector ETFs (8) | India stocks (28) | India ETFs |
+|---|--:|--:|--:|--:|
+| avg worst crash | **−78%** | −59% | **−73%** | −39% |
+| fell >50% | **18 of 18** | 5 of 8 | **27 of 28** | 0 |
+| fell >70% | 12 of 18 | 2 of 8 | 17 of 28 | 0 |
+| fell >90% | 2 (MU −98%) | 0 | 4 (TataSteel −98%) | 0 |
+
+- Single names routinely crash **50–98%**; sector/broad ETFs cap at ~−40 to −60% and **never go to zero.**
+- The stock-sleeve backtest *looks* better (US IRR +20.7%) — that is **pure survivorship bias** (yfinance keeps AAPL/MSFT, deletes the bankruptcies). A real top-30-of-2005 list held names that fell ~100% and never recovered. In India the stock sleeve added **~0% extra return** for all that crash risk.
+- Backed by **Bessembinder (2018):** the modal single-stock lifetime return is **−100%**; ~4% of firms create all net wealth. **J.P. Morgan:** ~40% of stocks suffered a *permanent* 70%+ crash — worst in **Tech/Telecom/Energy**, i.e. exactly the "beaten-up sector" names. **Keep every sleeve in ETFs.**
+
+## What the research says (literature check)
+| Claim | Verdict | |
+|---|---|---|
+| Gold/diversification cuts drawdown & raises Sharpe | **AGREE** | but via *risk reduction, not return* |
+| Lower-drawdown mix beats 100% equity on *Sharpe* | **AGREE** | wins risk-adjusted, loses on raw CAGR |
+| Heuristic 50/30/20 beats optimizing weights | **AGREE** | optimizing overfits; 1/N hard to beat |
+| Use ETFs, not single stocks | **AGREE** | single names raise the crash/permanent-loss tail decisively |
+| **Growth/QQQ tilt is a durable return edge** | **DISAGREE** | regime/re-rating, *not* a premium — value is the documented one |
+
+- **Gold** — WGC: a 5% sleeve adds ~+0.1pp return but cuts vol/drawdown. Erb & Harvey (*Golden Dilemma*), Dimson-Marsh-Staunton: gold's long-run **real return ≈ 0–1.5%/yr**. Academic optima sit at **2–6% gold**, WGC 2.5–10%, BIS "low single digits" — **so 20% here is high; trim toward ~10% and treat gold as insurance, not a return source** (the high in-sample gold weights are exactly the bias to avoid).
+- **Growth tilt** — no "growth premium" exists; the documented premium is **value** (Fama-French). Arnott/AQR/FTSE Russell decompose 2010–24 growth outperformance as **multiple expansion (re-rating)**, which mean-reverts. QQQ fell ~83% in 2000–02 and took 12–15y to recover. **This is the strategy's most fragile, regime-dependent leg.**
+- **Weights** — DeMiguel-Garlappi-Uppal (2009): no optimizer beat naive 1/N out-of-sample; Michaud: optimizers are "estimation-error maximizers." **The round-number heuristic is correct; don't fine-tune to the backtest.**
+
+## Honest caveats (sharpened by the literature)
+- **The durable, research-backed win is the lower drawdown / higher Sharpe** (−22% to −26% vs index ~−30% to −39%) — pure diversification, robustly supported. *That* is what you can rely on forward.
+- **The +2%/yr *return* excess is largely regime and likely fades.** Three of its sources are suspect: gold (risk-reduction dressed as return; its real return ≈0%), the growth tilt (re-rating that mean-reverts — *not* a premium), and a rebalancing artifact. **Forward-honest: expect ~0.5–1.5% return excess, not 2%** — plus the reliable drawdown reduction.
+- **20% gold is above every academic optimum (2–6%)** — the backtest *likes* gold only because of its 2000s/2010s run (in-sample bias). Treat gold as insurance; ~10% is the literature-defensible weight (15–20% only if you explicitly want a bigger crash cushion and accept the CAGR drag).
+- **The growth/QQQ sleeve is the fragile leg** — it carries the return *and* the regime risk (an 83%, 12–15-year drawdown is on its record). Don't lever it or assume it keeps leading.
+- **The grid "optimal" (100% QQQ / 100% gold) is overfit** — use the fixed heuristic blend, never the optimum.
+- **India sample is shorter (2009–25)**, lacks sector breadth, and its benchmark (large-cap NiftyBees) was weak vs Next-50+gold — treat India as more fragile than the US 21-year result.
+- Single path per market; ~20 years; survivorship-clean only on the ETF version; no leverage.
 
 ## Deployable recipe
-1. **Monthly:** allocate savings ~**50% growth / 30% most-beaten sector / 20% gold**; buy; **never sell.**
+1. **Monthly:** allocate savings to a growth-tilted ETF blend — **~50% growth / 30% most-beaten sector / ~10–20% gold** (10% = literature-optimal; 20% = bigger crash cushion, lower CAGR); buy; **never sell.**
 2. **US:** QQQ + most-beaten Select-Sector SPDR + GLD. **India:** JuniorBees (or a broad/growth ETF) + most-beaten available ETF + GoldBees (or SGBs).
-3. Optional: a light **annual rebalance** toward targets adds a small rebalancing bonus and caps the QQQ drift (at the cost of selling some winners) — optional, not required.
-4. Expect **~+1.5–2.5%/yr over index-DCA with materially lower drawdown** — a real *risk-adjusted* improvement, not a home run.
+3. **Always ETFs, never individual stocks** — single names add 50–98% crash + permanent-loss risk you can't capture in advance (see above).
+4. **Don't fine-tune the weights to the backtest** — the round-number heuristic is the robust choice; optimizing overfits.
+5. Optional light **annual rebalance** toward targets (small rebalancing bonus, caps QQQ drift, at the cost of trimming winners).
+6. Expect **~+0.5–1.5%/yr return over index-DCA *plus* materially lower drawdown** — a real *risk-adjusted* improvement, not a home run, and one whose most reliable payoff is lower risk.
 
 ## Where this sits in the investigation
-Across the whole study, **every active equity strategy lost to buy-and-hold except this one**: directional timing, single-stock dip-buying (value traps), beaten-up rotation (sells winners), sell-at-prior-high (cash drag + exit cap) — all underperformed. The hybrid wins because it is **buy-and-hold of a diversified, regime-rotating ETF tilt** — it keeps the things that work (time in market, let winners run, no value traps) and adds a modest, regime-robust tilt plus a structural drawdown cushion. The edge is **diversification + a growth tilt**, not market timing.
+Across the whole study, **every active equity strategy lost to buy-and-hold except this one**: directional timing, single-stock dip-buying (value traps), beaten-up rotation (sells winners), sell-at-prior-high (cash drag + exit cap) — all underperformed. The hybrid wins because it is **buy-and-hold of a diversified ETF tilt** — it keeps the things that work (time in market, let winners run, no value traps) and adds a structural drawdown cushion. **The literature's verdict, confirmed by the backtests: the edge is diversification (durable, risk-reducing), *not* the growth tilt (regime-dependent return). Bank on the lower drawdown; treat the extra return as a bonus that may fade.**
