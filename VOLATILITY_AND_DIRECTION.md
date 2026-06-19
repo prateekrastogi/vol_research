@@ -112,3 +112,18 @@ Caveat (the binding one): vol-clustering is only *profitable* where the option s
 
 ## Caveats
 Single-market, mostly 2007–2026 (bull-skewed) samples; backtests use modeled options off **real** underlying paths (not real option prices). Cross-sectional momentum & diversified TSMOM are real, well-documented effects — **not refuted here**; only their *single-market, retail, sub-month* application is. The math (§4) is standard portfolio theory; the IC/ρ/$S_1$ figures are illustrative — the *structure* (√breadth, variance reduction, the $1/\sqrt{\rho}$ ceiling, the $\mu-c$ gate) is the robust part.
+
+---
+
+## Appendix — Momentum vs Mean-Reversion across both axes
+
+"Momentum vs mean-reversion" is the *continue-or-reverse* (autocorrelation) question — and it applies to **each** axis separately:
+
+| Axis | "Momentum" (continues) | "Mean-reversion" (reverts) | Predictable? | Instrument |
+|---|---|---|---|---|
+| **Direction** (returns, 1st moment) | trend / cross-sectional momentum (3–12 mo) | short-term reversal (1d–1mo); long-term reversal (3–5 yr) | weak — ≈ no for retail single-market | stocks, futures |
+| **Volatility** (magnitude, 2nd moment) | vol clustering (short-run) | vol reverts to a long-run level | **strong** (vol autocorr ~0.3–0.46) | options (straddles/strangles) |
+
+- Classic **momentum/mean-reversion research = the *Direction* row** (return autocorrelation). The *Volatility* row is a separate, more-predictable phenomenon.
+- On the **Volatility** row, momentum *and* mean-reversion are **both true at once** (different horizons): clustering short-run + reversion long-run — exactly what **HAR-RV** (clustering) and **GARCH** (reversion) each model. On the **Direction** row they genuinely compete (a horizon either trends or reverts).
+- Practical crux: the **direction** axis is hard to harvest; the **volatility** axis is more predictable — **but tradeable only where the option surface *under-prices* it** (the leverage effect couples the two axes and is why index skew exists).
