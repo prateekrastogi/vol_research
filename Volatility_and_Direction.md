@@ -1,4 +1,4 @@
-# Trend & Direction — The Crux (with mathematical backing)
+# Volatility & Direction — The Crux (with mathematical backing)
 
 *Companion to [README.md](README.md), [VOL_STRATEGIES.md](VOL_STRATEGIES.md), [IMPLEMENTATION.md](IMPLEMENTATION.md). Why directional/trend bets fail for a retail single-market trader, why diversified CTAs survive, and the reframe to volatility. Empirical figures are from this repo's backtests (modeled options off **real** underlying paths) + the cited literature.*
 
