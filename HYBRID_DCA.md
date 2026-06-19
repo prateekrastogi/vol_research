@@ -90,6 +90,26 @@ Replacing the ETF sleeves with individual large-cap stocks **massively raises cr
 - **Growth tilt** — no "growth premium" exists; the documented premium is **value** (Fama-French). Arnott/AQR/FTSE Russell decompose 2010–24 growth outperformance as **multiple expansion (re-rating)**, which mean-reverts. QQQ fell ~83% in 2000–02 and took 12–15y to recover. **This is the strategy's most fragile, regime-dependent leg.**
 - **Weights** — DeMiguel-Garlappi-Uppal (2009): no optimizer beat naive 1/N out-of-sample; Michaud: optimizers are "estimation-error maximizers." **The round-number heuristic is correct; don't fine-tune to the backtest.**
 
+## How this compares to value & momentum investing
+The growth tilt is *regime beta*, not a premium. The two genuine documented return premia are **value** and **momentum** — so how do they stack up at beating the index (DCA monthly + hold, long-only factor ETFs)?
+
+| Approach | 2004–25 IRR (maxDD) | 2013–25 IRR (maxDD) | vs index |
+|---|--:|--:|--:|
+| Growth tilt (QQQ) | 16.3% (−37%) | 18.9% (−30%) | +4.6 / +5.3% |
+| **Momentum (MTUM)** | *n/a pre-2013* | 16.0% (−30%) | **+2.4%** |
+| **Hybrid 50/30/20** | 14.1% (−27%) | 15.9% (−26%) | +2.3% |
+| Index (SPY) | 11.7% (−39%) | 13.7% (−31%) | — |
+| **Value (VTV large)** | 10.1% (−42%) | 11.4% (−33%) | **−1.6 / −2.3%** |
+| Value (small, IWN/VBR) | 8.5% (−50%) | 9.4% (−42%) | −3.3 / −4.3% |
+
+- **Value *lagged* the index (−1.6 to −4.3%) with deeper drawdowns** over the last 15–20y — the "**value winter**" (2007–2020), the same re-rating regime that made growth/the hybrid look good. A retail long-only value-ETF buyer *underperformed*.
+- **Momentum (MTUM) beat the index by +2.4%** — the one classic factor that did in the modern sample, and the same margin as the hybrid — but at the *same* −30% drawdown (no risk reduction), with **crash risk** (2009 long-short momentum crash ≈ −70%) and the **highest turnover** (tax/cost drag, brutal under India's STT).
+- **The hybrid matched momentum's excess at *lower* drawdown** (−26% vs −30/−33%), because its edge is *diversification*, not a premium.
+
+**Regime caveat:** 2004–25 is value's *worst* century-era and growth/momentum's best — the table flatters the latter. **Long run, value beat growth ~+3–5%/yr (Fama-French HML, 1926–2007)** — a real derived edge, but earned long-short, requiring decade-long patience (you just saw a 13-year drought) and diluted in long-only ETFs. **Momentum has the highest long-run risk-adjusted premium** of the classics. And the textbook winner is to **combine them**: Asness-Moskowitz-Pedersen ("Value and Momentum Everywhere") show value and momentum are *negatively correlated*, so a value+momentum blend has a far higher Sharpe than either alone — the same "uncorrelated engines take turns" logic as the hybrid, but powered by two genuine premia.
+
+**Verdict:** momentum is the factor that most reliably beats the index *on return* (costs you turnover/crash risk); value is the deepest-documented but is in a drought and recently *lost*; value+momentum combined is the principled return play; the hybrid trades a slightly-less-certain return edge for a **durable drawdown reduction** none of the single factors give.
+
 ## Honest caveats (sharpened by the literature)
 - **The durable, research-backed win is the lower drawdown / higher Sharpe** (−22% to −26% vs index ~−30% to −39%) — pure diversification, robustly supported. *That* is what you can rely on forward.
 - **The +2%/yr *return* excess is largely regime and likely fades.** Three of its sources are suspect: gold (risk-reduction dressed as return; its real return ≈0%), the growth tilt (re-rating that mean-reverts — *not* a premium), and a rebalancing artifact. **Forward-honest: expect ~0.5–1.5% return excess, not 2%** — plus the reliable drawdown reduction.
