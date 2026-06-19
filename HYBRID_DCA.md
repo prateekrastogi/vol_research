@@ -110,6 +110,19 @@ The growth tilt is *regime beta*, not a premium. The two genuine documented retu
 
 **Verdict:** momentum is the factor that most reliably beats the index *on return* (costs you turnover/crash risk); value is the deepest-documented but is in a drought and recently *lost*; value+momentum combined is the principled return play; the hybrid trades a slightly-less-certain return edge for a **durable drawdown reduction** none of the single factors give.
 
+### Does combining value+momentum beat the index *and* the hybrid? (2013–25)
+| strategy | IRR | maxDD | vs SPY | vs hybrid |
+|---|--:|--:|--:|--:|
+| Hybrid 50/30/20 | 15.9% | −26% | +2.3% | — |
+| Val+Mom+Growth ⅓ (rebal) | 15.6% | −29% | +1.9% | −0.3% |
+| Momentum alone (MTUM) | 15.5% | ~−30% | +1.9% | −0.4% |
+| **Value+Mom 50/50 (rebal)** | **13.7%** | −31% | **+0.0%** | **−2.2%** |
+| Val+Mom+Gold 40/40/20 | 13.6% | −27% | −0.1% | −2.4% |
+| Index (SPY) | 13.7% | −31% | — | −2.3% |
+| Value alone (VTV) | 11.4% | −33% | −2.3% | −4.5% |
+
+**No — the combo *tied* the index (+0.0%) and *lost* to the hybrid (−2.2%).** Momentum *alone* (+1.9%) beat the blend; value was dead weight that dragged it to the index, and the pair didn't even cut drawdown (−31% ≈ index — value & momentum both fell in 2020 & 2022). The combo only matched the hybrid when *growth* was added (regime beta, not the pairing). **Caveat:** 2013–25 is value's worst century-era and the *only* testable window (MTUM born 2013), so it's rigged against the pairing. Asness's value+momentum edge is a **multi-decade, global, largely long-short, risk-adjusted** result — real, but it shows up over a full cycle (incl. value's good years), not in a long-only slice of value's drought; net of turnover/tax (India STT) it erodes further. Bottom line: a documented edge you can't bank on in any given decade — *this* decade it underperformed the simple hybrid.
+
 ## Honest caveats (sharpened by the literature)
 - **The durable, research-backed win is the lower drawdown / higher Sharpe** (−22% to −26% vs index ~−30% to −39%) — pure diversification, robustly supported. *That* is what you can rely on forward.
 - **The +2%/yr *return* excess is largely regime and likely fades.** Three of its sources are suspect: gold (risk-reduction dressed as return; its real return ≈0%), the growth tilt (re-rating that mean-reverts — *not* a premium), and a rebalancing artifact. **Forward-honest: expect ~0.5–1.5% return excess, not 2%** — plus the reliable drawdown reduction.
