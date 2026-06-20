@@ -51,8 +51,7 @@
 ## 3. Execution layer
 
 - **QuantConnect — drop for NSE options.** No NSE options data, no F&O routing (Zerodha/Samco plugins = cash equities only). The ~$60/mo buys nothing here. (US SPX/SPY/VIX work on QC, but LRS legally blocks an Indian resident from funding US derivatives.)
-- **Best = native broker API: Dhan or Fyers** — orders route free; you write the automation in your own Python, with the HAR-RV / Lee-Mykland model in your code.
-- **ICICI Breeze** (`breeze-connect`) — free 1-second underlying + per-strike option history for research/backtest.
+- **Best = native broker API: ICICI Breeze** (`breeze-connect`) — free 1-second underlying + per-strike option history for research/backtest.
 - **Regulatory (SEBI Feb-2025 retail-algo framework, full enforcement Apr-2026):** static-IP whitelist + 2FA + client-specific keys; **under ~10 orders/sec is exempt** from per-strategy registration (a straddle/strangle is well under). Run on a **fixed-IP VPS**. Use only a SEBI-registered domestic broker (or IBKR's India entity); the global IBKR account / US-options-under-LRS route is legally blocked.
 
 ---
