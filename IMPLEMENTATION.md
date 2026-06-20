@@ -40,21 +40,24 @@
 | Source | Underlying minute | Options minute (incl. expired) | Tick | Free? |
 |---|:--:|:--:|:--:|:--:|
 | **ICICI Breeze** (`breeze-connect`) | ✅ down to **1-sec** | ✅ **best free, per-strike** | live WS only | ✅ no data fee |
-| **Dhan** (`DhanHQ-py`) | ✅ ~5 yr | ✅ expired options + chain/greeks | live WS | ✅ |
+| **Dhan** (`DhanHQ-py`) | ✅ ~5 yr | ✅ expired options + chain/greeks | live WS | ⚠️ **₹499/mo**\* |
 | Zerodha `pykiteconnect` | ✅ | ✅ | live WS | ⚠️ ~₹500/mo data |
-| Fyers / Angel One | ✅ underlying | ❌ expired broken/dropped | — | free |
+| **Fyers** (`fyers-apiv3`) | ✅ underlying | ❌ expired broken/dropped | live WS | ✅ **fully free** |
+| Angel One (`smartapi`) | ✅ underlying | ❌ expired broken/dropped | live WS | free |
 | `jugaad-data` / `nsepython` | ❌ EOD only | ❌ | ❌ | fragile |
+
+\* **Dhan correction (verified 2026-06):** order/**trading** API is free, but the **Data API** (live feed + quotes + historical + intraday) is **₹499 + tax/month**, auto-debited every 30 days — **waived if you execute ≥25 trades in the trailing 30 days** (an active straddle trader clears this easily: a 2-leg round-trip ≈ 4 trades → ~7 round-trips/mo). So Dhan data is *effectively free for an active options trader*, ₹499/mo otherwise. **Fyers data + historical is fully free, no subscription** — the genuinely-free option if you trade less than 25×/mo. ([Dhan Data API subscription](https://dhan.co/support/platforms/dhanhq-api/how-does-the-dhanhq-data-api-subscription-work/), [are Dhan APIs free](https://www.chittorgarh.com/faq_pg/are-dhan-apis-free/4130/), [Fyers datafeeds](https://support.fyers.in/portal/en/kb/articles/do-i-need-to-pay-for-datafeeds))
 
 - **No free historical tick** → self-record live (`rthennan/ZerodhaWebsocket`, `zerodha-tickersaver`) or buy **GDFL / TrueData** (SEBI-authorized; also the route for deep, survivorship-complete option archives).
 - **Wrapper:** `marketcalls/openalgo` — unified multi-broker fetch + DuckDB storage + backtest.
-- **Recommended:** **pluggable data adapter** — Breeze for research (1-sec + per-strike option history), Dhan for live, same interface so the strategy code doesn't change.
+- **Recommended:** **pluggable data adapter** — Breeze for research (1-sec + per-strike option history, free), **Fyers or Dhan for live** (Fyers data free; Dhan data ₹499/mo unless ≥25 trades/30d), same interface so the strategy code doesn't change.
 
 ---
 
 ## 3. Execution layer
 
 - **QuantConnect — drop for NSE options.** No NSE options data, no F&O routing (Zerodha/Samco plugins = cash equities only). The ~$60/mo buys nothing here. (US SPX/SPY/VIX work on QC, but LRS legally blocks an Indian resident from funding US derivatives.)
-- **Best = native broker API: Dhan (default)** — free, options-first, ~50ms, MIT SDK — or **Fyers** (free, native atomic multi-leg baskets so both straddle legs fire together). You write the automation in your own Python; HAR-CJ/Lee-Mykland live in your code.
+- **Best = native broker API.** Both route **orders for free**. **Dhan** — options-first, ~50ms, MIT SDK — but its **Data API costs ₹499/mo** (waived at ≥25 trades/30d). **Fyers** — **data fully free**, native atomic multi-leg baskets so both straddle legs fire together. For a cost-minimising retail trader, **Fyers is the free default for data**; pick **Dhan** if you trade enough to clear the 25-trade data-fee waiver (then it's free too). You write the automation in your own Python; HAR-CJ/Lee-Mykland live in your code.
 - **IBKR India** — viable for *live* (resident margin a/c, full TWS/Python API, NSE F&O, cheap) but **gives no historical options data** (expired options unavailable), so not a backtest-data source.
 - **Signal-bridge alternative** (keep managed execution, your model in code → webhook): **Algomojo / Stoxxo / AlgoTest Signal Bridge / Tradetron**.
 - **No-code option:** **AlgoTest** (~₹499 pay-per-use) — but it can't host custom HAR/Lee-Mykland models, only its own conditions.
