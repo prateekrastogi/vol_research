@@ -46,10 +46,6 @@
 | Angel One (`smartapi`) | ✅ underlying | ❌ expired broken/dropped | live WS | free |
 | `jugaad-data` / `nsepython` | ❌ EOD only | ❌ | ❌ | fragile |
 
-- **No free historical tick** → self-record live (`rthennan/ZerodhaWebsocket`, `zerodha-tickersaver`) or buy **GDFL / TrueData** (SEBI-authorized; also the route for deep, survivorship-complete option archives).
-- **Wrapper:** `marketcalls/openalgo` — unified multi-broker fetch + DuckDB storage + backtest.
-- **Recommended:** **pluggable data adapter** — Breeze for research (1-sec + per-strike option history, free), **Fyers or Dhan for live** (Fyers data free; Dhan data ₹499/mo unless ≥25 trades/30d), same interface so the strategy code doesn't change.
-
 ---
 
 ## 3. Execution layer
