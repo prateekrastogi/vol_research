@@ -70,7 +70,7 @@ Build a custom fee model with the full NSE stack; STT is the dominant variable c
 
 - ✅ **Short-dated + index/liquid + intraday + magnitude (not direction) + where IV under-prices** — strong on **BTC daily** (inefficient surface), weaker on **NIFTY** (more efficient + heavy STT/spread drag).
 - ❌ Monthly expiry intraday, single-stock intraday, direction prediction (≈coin-flip / mean-reverting), clustering where IV already prices it (equity weekly/30-day = a trap), and leverage (scales risk + pays interest, creates no edge).
-- The intraday edge is a **speed edge** — react to elevated/jumping RV *faster than the short-dated IV re-prices*. That is exactly what the HAR-CJ + Lee-Mykland intraday signal is for.
+- The intraday edge is a **speed edge** — react to elevated/jumping RV *faster than the short-dated IV re-prices*. That is exactly what the HAR-RV + Lee-Mykland intraday signal is for.
 
 ---
 
@@ -88,7 +88,7 @@ Build a custom fee model with the full NSE stack; STT is the dominant variable c
 
 1. Custom **NSE cost model** (FeeModel) — first, so nothing downstream flatters itself.
 2. **Data adapter** (Breeze research / Dhan live), minute + per-strike options.
-3. **Intraday HAR-CJ RV forecast + Lee-Mykland jump flag** on NIFTY futures.
+3. **Intraday HAR-RV RV forecast + Lee-Mykland jump flag** on NIFTY futures.
 4. **RV − IV spread signal** (de-biased by regime VRP) → straddle/strangle entry/exit.
 5. **Walk-forward OOS backtest** on real option data, vs blind-straddle + momentum baselines.
 6. If it clears costs OOS → **paper trade** (Dhan/Fyers) → small live on a fixed-IP VPS, SEBI-compliant.
