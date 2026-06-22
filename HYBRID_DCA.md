@@ -91,7 +91,7 @@ Replacing the ETF sleeves with individual large-cap stocks **massively raises cr
 - **Weights** — DeMiguel-Garlappi-Uppal (2009): no optimizer beat naive 1/N out-of-sample; Michaud: optimizers are "estimation-error maximizers." **The round-number heuristic is correct; don't fine-tune to the backtest.**
 
 ## How this compares to value & momentum investing
-The growth tilt is *regime beta*, not a premium. The two genuine documented return premia are **value** and **momentum** — so how do they stack up at beating the index (DCA monthly + hold, long-only factor ETFs)? *(All figures: identical windows starting where every ticker exists — the factor-era window begins at MTUM's 2013-04 inception — and drawdowns are weekly-sampled. See `backtest/compare_final.py`.)*
+The growth tilt is *regime beta*, not a premium. The two genuine documented return premia are **value** and **momentum** — so how do they stack up at beating the index (DCA monthly + hold, long-only factor ETFs)? *(All figures: identical windows starting where every ticker exists — the factor-era window begins at MTUM's 2013-04 inception — and drawdowns are weekly-sampled.)*
 
 | Approach | 2004–25 IRR (maxDD) | 2013–25 IRR (maxDD) | vs index |
 |---|--:|--:|--:|

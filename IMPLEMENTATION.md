@@ -78,7 +78,7 @@ Build a custom fee model with the full NSE stack; STT is the dominant variable c
 
 - **Walk-forward, out-of-sample, net-of-cost.** Judge on OOS Sharpe/Sortino after the full cost model — never in-sample R².
 - **Benchmark every addition** against (a) a *blind* straddle and (b) the crude opening-momentum baseline. If a feature doesn't beat both OOS net-of-cost, drop it.
-- **Validate on real option data** (Breeze/Dhan/TrueData). Every result in `backtest/` so far is **BS-modeled off real underlying paths** — directionally informative, not a tradeable edge until confirmed on real option prices/spreads/skew.
+- **Validate on real option data** (Breeze/Dhan/TrueData). Every result so far is **BS-modeled off real underlying paths** — directionally informative, not a tradeable edge until confirmed on real option prices/spreads/skew.
 - **Evaluate with Sortino/Calmar**, not Sharpe alone (long-vol is positive-skew, lumpy); expect ugly short-window Sharpe.
 - **Multiple-testing awareness** — every variant tried raises the overfitting risk on a thin edge.
 
