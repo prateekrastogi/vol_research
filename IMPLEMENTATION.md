@@ -87,11 +87,11 @@ Build a custom fee model with the full NSE stack; STT is the dominant variable c
 ## 7. Build order
 
 1. Custom **NSE cost model** (FeeModel) — first, so nothing downstream flatters itself.
-2. **Data adapter** (Breeze research / Dhan live), minute + per-strike options.
+2. **Data adapter** (Breeze — research + live), minute + per-strike options (incl. expired).
 3. **Intraday HAR-RV forecast + Lee-Mykland jump flag** on NIFTY futures.
 4. **RV − IV spread signal** (de-biased by regime VRP) → straddle/strangle entry/exit.
 5. **Walk-forward OOS backtest** on real option data, vs blind-straddle + momentum baselines.
-6. If it clears costs OOS → **paper trade** (Dhan/Fyers) → small live on a fixed-IP VPS, SEBI-compliant.
+6. If it clears costs OOS → **paper trade** (Breeze) → small live on a fixed-IP VPS, SEBI-compliant.
 
 ---
 
